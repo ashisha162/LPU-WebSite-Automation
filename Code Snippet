@@ -1,0 +1,71 @@
+
+import java.awt.Point;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+//import org.openqa.selenium.support.decorators.WebDriverDecorator;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class lpu {
+
+	public static void main(String args[]) throws InterruptedException
+	{
+//		System.setProperties("WebDriver.ChromeDriver","");
+		
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+		
+		Actions act=new Actions(driver);
+		
+		driver.get("https://ums.lpu.in/lpuums/");
+		
+		WebElement user=driver.findElement(By.className("form-control"));
+		user.sendKeys("12115852");
+		
+	    Thread.sleep(10000);
+		WebElement password = driver.findElement(By.xpath("//*[@id=\"TxtpwdAutoId_8767\"]"));
+
+		password.sendKeys("Hmkonhipta1@");
+
+		
+		driver.findElement(By.id("iBtnLogins150203125")).click();
+		
+		
+		WebElement acedemacis=driver.findElement(By.partialLinkText("Academics"));
+		act.moveToElement(acedemacis).build().perform();
+		
+		WebElement examination=driver.findElement(By.partialLinkText("Result"));
+		act.moveToElement(examination).click().build().perform();
+		
+		
+		WebElement result =driver.findElement(By.cssSelector(".rtsLink.rtsAfter"));
+		act.moveToElement(result).click().build().perform();
+		
+		
+		WebElement reappear=driver.findElement(By.partialLinkText("ReAppear(s)/Backlog(s)"));
+		act.moveToElement(reappear).click().build().perform();
+		
+		
+		WebElement graphical=driver.findElement(By.partialLinkText("Graphical Analysis"));
+		act.moveToElement(graphical).click().build().perform();
+		
+		WebElement home=driver.findElement(By.className("nav_lp_icon"));
+		act.moveToElement(home).click().build().perform();
+//		driver.quit();
+				
+		
+
+		
+		
+	}
+}
