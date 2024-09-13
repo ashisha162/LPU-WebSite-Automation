@@ -61,6 +61,21 @@ public class lpu {
 		
 		WebElement home=driver.findElement(By.className("nav_lp_icon"));
 		act.moveToElement(home).click().build().perform();
+
+
+                WebElement administrative=driver.findElement(By.partialLinkText("Administrative"));
+                act.moveToElement(administartive).build().perform();
+
+
+          WebElement fees=driver.findElement(By.partialLinkText("Fee Dashboard"));
+            act.moveToElement(fees).click().build().perform();
+            
+            
+            WebElement feesCheck=driver.findElement(By.linkText("Click to view the guidelines for fee payment"));
+            act.moveToElement(feesCheck).click().build().perform();
+			
+        	WebElement dashboard=driver.findElement(By.className("nav_lp_icon"));
+    		act.moveToElement(dashboard).click().build().perform();
 //		driver.quit();
 				
 		
