@@ -1,7 +1,8 @@
+package LPUWEBSITE;
+
 
 import java.awt.Point;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,71 +17,152 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class lpu {
-
 	public static void main(String args[]) throws InterruptedException
-	{
-//		System.setProperties("WebDriver.ChromeDriver","");
-		
+	{		
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		
 		Actions act=new Actions(driver);
-		
 		driver.get("https://ums.lpu.in/lpuums/");
 		
+		//Here I am passing the username 
 		WebElement user=driver.findElement(By.className("form-control"));
 		user.sendKeys("12115852");
 		
 	    Thread.sleep(10000);
+	    
+	    //Here passing the password 
 		WebElement password = driver.findElement(By.xpath("//*[@id=\"TxtpwdAutoId_8767\"]"));
-
 		password.sendKeys("Hmkonhipta1@");
-
-		
+		//here Performing the click action on the button
 		driver.findElement(By.id("iBtnLogins150203125")).click();
 		
 		
+//		try
+//		{
+//			WebElement pop=driver.findElement(By.xpath("//*[@id=\"Bodymodalmarks\"]"));
+//            act.moveToElement(pop).build().perform();
+            
+//            WebElement check=driver.findElement(By.xpath("//*[@id=\"chkReadMessage\"]"));
+//            check.click();
+//            
+//            WebElement confirm=driver.findElement(By.xpath("//*[@id=\"btnClose\"]"));
+//            confirm.click();
+			
 		WebElement acedemacis=driver.findElement(By.partialLinkText("Academics"));
 		act.moveToElement(acedemacis).build().perform();
 		
 		WebElement examination=driver.findElement(By.partialLinkText("Result"));
 		act.moveToElement(examination).click().build().perform();
-		
-		
+			
 		WebElement result =driver.findElement(By.cssSelector(".rtsLink.rtsAfter"));
 		act.moveToElement(result).click().build().perform();
-		
-		
+			
 		WebElement reappear=driver.findElement(By.partialLinkText("ReAppear(s)/Backlog(s)"));
 		act.moveToElement(reappear).click().build().perform();
-		
-		
+			
 		WebElement graphical=driver.findElement(By.partialLinkText("Graphical Analysis"));
 		act.moveToElement(graphical).click().build().perform();
 		
 		WebElement home=driver.findElement(By.className("nav_lp_icon"));
 		act.moveToElement(home).click().build().perform();
+		
+		    //Administrative 
 
-
-                WebElement administrative=driver.findElement(By.partialLinkText("Administrative"));
-                act.moveToElement(administartive).build().perform();
-
-
-          WebElement fees=driver.findElement(By.partialLinkText("Fee Dashboard"));
+            WebElement administrative=driver.findElement(By.partialLinkText("Administrative"));
+            act.moveToElement(administrative).build().perform();
+            
+            WebElement fees=driver.findElement(By.partialLinkText("Fee Dashboard"));
             act.moveToElement(fees).click().build().perform();
-            
-            
-            WebElement feesCheck=driver.findElement(By.linkText("Click to view the guidelines for fee payment"));
+               
+            WebElement feesCheck=driver.findElement(By.linkText("Fee Payment Schedule and Guidelines."));
             act.moveToElement(feesCheck).click().build().perform();
 			
         	WebElement dashboard=driver.findElement(By.className("nav_lp_icon"));
     		act.moveToElement(dashboard).click().build().perform();
-//		driver.quit();
-				
-		
-
-		
-		
+    		
+    		//Important Links
+    		//These are The Specific Action
+    		
+//    		WebElement  importantlink=driver.findElement(By.partialLinkText("Important Links"));
+//    		act.moveToElement(importantlink).build().perform();
+//    		
+//    		WebElement changepassword=driver.findElement(By.linkText("Change UMS Password"));
+//    		act.moveToElement(changepassword).click().build().perform();
+//    		
+//    		WebElement oldPassword=driver.findElement(By.xpath("//*[@id=\"txtOldPassword\"]"));
+//    		oldPassword.sendKeys("Hmkonhipta1@");
+//    		
+//    		WebElement newPassword=driver.findElement(By.xpath("//*[@id=\"txtNewPassword\"]"));
+//    		newPassword.sendKeys("LoveTesting1@");
+//    		
+//    		WebElement repeatnewPassword=driver.findElement(By.xpath("//*[@id=\"txtNewPassword\"]"));
+//    		repeatnewPassword.sendKeys("LoveTesting1@");
+//    		
+//    		WebElement changeButton=driver.findElement(By.className("change-btn"));
+//    		changeButton.click();
+    		
+    		
+    		
+    		//Messages Tab
+    		
+    		WebElement message=driver.findElement(By.partialLinkText("All Messages"));
+    		message.click();
+    		
+    		WebElement searchMessage=driver.findElement(By.partialLinkText("Search Messages"));
+    		searchMessage.click();
+    		
+    		WebElement searchMsgText=driver.findElement(By.xpath("//*[@id=\"txtSubject\"]"));
+    		searchMsgText.sendKeys("placement");
+    		
+    		WebElement msgSearchbtn=driver.findElement(By.linkText("filteredDetail()"));
+    		msgSearchbtn.click();
+    		
+    		WebElement dashboard1=driver.findElement(By.className("nav_lp_icon"));
+    		act.moveToElement(dashboard1).click().build().perform();
+    			
+    		//Assignment
+            WebElement assignment=driver.findElement(By.cssSelector("#K2 > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"));
+            assignment.click();
+   
+            WebElement details=driver.findElement(By.partialLinkText("View Details"));
+            details.click();
+   
+            WebElement dashboard2=driver.findElement(By.className("nav_lp_icon"));
+	        act.moveToElement(dashboard2).click().build().perform();
+	        
+	        WebElement attendence=driver.findElement(By.id("AttPercent"));
+	        attendence.click();
+	        
+	        //To verify that we are on the correct attendece page
+	        //On perfroming the action on the attendence button the attendace summary page open first without any action 
+	        //So here I will peformig the verification of that page ,I am on the same correct page.
+	        
+	        WebElement attendenceSummary=driver.findElement(By.xpath("*\\h3[text()='Attendence Summary']"));
+	        if(attendenceSummary!=null && attendenceSummary.equals("Attendance Summary"))
+	        {
+	        	System.out.println("Attendence summary is being displayed");
+	        	
+	        }
+	        else
+	        {
+	        	driver.findElement(By.partialLinkText("Close")).click();
+	        }
+	        
+	        WebElement attendenceDetail=driver.findElement(By.xpath("*\\[@id=\"second-tab\"]"));
+	        act.moveToElement(attendenceDetail).click().build().perform();
+	        driver.findElement(By.partialLinkText("Close")).click();
+	        
+	         //Hostel Booking Tab
+	        
+	        WebElement hostel=driver.findElement(By.xpath("//*[@data-original-title='Click to Book/ Modify Hostel Allocation']"));
+	        act.moveToElement(hostel).click().build().perform();
+	        
+	        //Verifying that user is on the correct the residential booking page.
+	        WebElement booking = driver.findElement(By.xpath("//h3[text()='Residential Booking']"));
+             if(booking!=null && booking.equals("Residential Booking"));
+             {
+            	 System.out.println("Welcome to the Hostel Booking Page");
+             }	
 	}
 }
