@@ -29,7 +29,7 @@ public class lpu {
 		WebElement user=driver.findElement(By.className("form-control"));
 		user.sendKeys("12115852");
 		
-	    Thread.sleep(10000);
+	    Thread.sleep(100000);
 	    
 	    //Here passing the password 
 		WebElement password = driver.findElement(By.xpath("//*[@id=\"TxtpwdAutoId_8767\"]"));
@@ -72,13 +72,13 @@ public class lpu {
             WebElement administrative=driver.findElement(By.partialLinkText("Administrative"));
             act.moveToElement(administrative).build().perform();
             
-            WebElement fees=driver.findElement(By.partialLinkText("Fee Dashboard"));
+            WebElement fees=driver.findElement(By.xpath("/html/body/form/div[3]/nav[1]/div/ul/li[2]/div/div[1]/div[2]/ul/li[1]/a"));
             act.moveToElement(fees).click().build().perform();
                
-            WebElement feesCheck=driver.findElement(By.linkText("Fee Payment Schedule and Guidelines."));
+            WebElement feesCheck=driver.findElement(By.xpath("//h4[text()='Fee Payment Schedule and Guidelines.']"));
             act.moveToElement(feesCheck).click().build().perform();
 			
-        	WebElement dashboard=driver.findElement(By.className("nav_lp_icon"));
+        	WebElement dashboard=driver.findElement(By.xpath("/html/body/form/div[4]/div/div[2]/div[2]/div[2]/div[2]/ul/li[1]/a"));
     		act.moveToElement(dashboard).click().build().perform();
     		
     		//Important Links
@@ -106,13 +106,13 @@ public class lpu {
     		
     		//Messages Tab
     		
-    		WebElement message=driver.findElement(By.partialLinkText("All Messages"));
+    		WebElement message=driver.findElement(By.xpath("//*[text()='All Messages' and @onclick='getMyAllMessages()']"));
     		message.click();
     		
-    		WebElement searchMessage=driver.findElement(By.partialLinkText("Search Messages"));
+    		WebElement searchMessage=driver.findElement(By.xpath("//a[@href='frmStudentsMyMessages.aspx' and text()='Search Messages']"));
     		searchMessage.click();
     		
-    		WebElement searchMsgText=driver.findElement(By.xpath("//*[@id=\"txtSubject\"]"));
+    		WebElement searchMsgText=driver.findElement(By.xpath("//*[@id='txtSubject']"));
     		searchMsgText.sendKeys("placement");
     		
     		WebElement msgSearchbtn=driver.findElement(By.linkText("filteredDetail()"));
@@ -159,10 +159,13 @@ public class lpu {
 	        act.moveToElement(hostel).click().build().perform();
 	        
 	        //Verifying that user is on the correct the residential booking page.
-	        WebElement booking = driver.findElement(By.xpath("//h3[text()='Residential Booking']"));
+	        WebElement booking = driver.findElement(By.xpath("//h3[text()=' Residential Booking']"));
              if(booking!=null && booking.equals("Residential Booking"));
              {
             	 System.out.println("Welcome to the Hostel Booking Page");
-             }	
+             }
+	          
+             
+=		
 	}
 }
